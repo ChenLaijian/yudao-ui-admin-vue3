@@ -103,11 +103,23 @@ const schema = reactive<FormSchema[]>([
       placeholder: t('login.passwordPlaceholder')
     }
   },
+  // {
+  //   field: 'code',
+  //   label: t('login.code'),
+  //   colProps: {
+  //     span: 24
+  //   }
+  // },
   {
-    field: 'code',
-    label: t('login.code'),
+    field: 'inviteCode',
+    label: t('login.inviteCode'),
+    value: '',
+    component: 'Input',
     colProps: {
       span: 24
+    },
+    componentProps: {
+      placeholder: t('login.inviteCodePlaceholder')
     }
   },
   {
@@ -122,7 +134,7 @@ const rules: FormRules = {
   username: [required()],
   password: [required()],
   check_password: [required()],
-  code: [required()]
+  inviteCode: [required()]
 }
 
 const loading = ref(false)

@@ -132,7 +132,9 @@ export default {
     btnQRCode: '二维码登录',
     qrcode: '扫描二维码登录',
     btnRegister: '注册',
-    SmsSendMsg: '验证码已发送'
+    SmsSendMsg: '验证码已发送',
+    contactName: '联系人',
+    contactNamePlaceHolder: '请输入联系人'
   },
   captcha: {
     verification: '请完成安全验证',

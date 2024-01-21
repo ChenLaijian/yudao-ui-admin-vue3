@@ -13,6 +13,7 @@ export interface TenantVO {
   expireTime: Date
   accountCount: number
   createTime: Date
+  website: string
 }
 
 export interface TenantPageReqVO extends PageParam {

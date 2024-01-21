@@ -132,7 +132,9 @@ export default {
     btnQRCode: 'QR code sign in',
     qrcode: 'Scan the QR code to log in',
     btnRegister: 'Sign up',
-    SmsSendMsg: 'code has been sent'
+    SmsSendMsg: 'code has been sent',
+    contactName: 'contact name',
+    contactNamePlaceHolder: 'Please Enter Contact Name'
   },
   captcha: {
     verification: 'Please complete security verification',

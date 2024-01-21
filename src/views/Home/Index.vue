@@ -54,7 +54,7 @@
     </el-card>
   </div>
 
-  <el-row class="mt-5px" :gutter="20" justify="space-between">
+  <!-- <el-row class="mt-5px" :gutter="20" justify="space-between" hidden>
     <el-col :xl="16" :lg="16" :md="24" :sm="24" :xs="24" class="mb-10px">
       <el-card shadow="never">
         <template #header>
@@ -158,7 +158,7 @@
         </el-skeleton>
       </el-card>
     </el-col>
-  </el-row>
+  </el-row> -->
 </template>
 <script lang="ts" setup>
 import { set } from 'lodash-es'

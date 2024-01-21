@@ -15,7 +15,7 @@
           <LoginFormTitle style="width: 100%" />
         </el-form-item>
       </el-col>
-      <el-col :span="24" style="padding-right: 10px; padding-left: 10px">
+      <el-col :span="24" style="padding-right: 10px; padding-left: 10px" hidden>
         <el-form-item v-if="loginData.tenantEnable === 'true'" prop="tenantName">
           <el-input
             v-model="loginData.loginForm.tenantName"
@@ -211,12 +211,19 @@ const getCode = async () => {
   }
 }
 // 获取租户 ID
-const getTenantId = async () => {
-  if (loginData.tenantEnable === 'true') {
-    const res = await LoginApi.getTenantIdByName(loginData.loginForm.tenantName)
-    authUtil.setTenantId(res)
-  }
+// const getTenantId = async () => {
+//   if (loginData.tenantEnable === 'true') {
+//     const res = await LoginApi.getTenantIdByName(loginData.loginForm.tenantName)
+//     authUtil.setTenantId(res)
+//   }
+// }
+
+const getTenant = async () => {
+  const res = await LoginApi.getTenantByUser(loginData.loginForm.username);
+  authUtil.setTenantId(res.id)
+  loginData.loginForm.tenantName = res.name
 }
+
 // 记住我
 const getCookie = () => {
   const loginForm = authUtil.getLoginForm()
@@ -244,7 +251,7 @@ const loading = ref() // ElLoading.service 返回的实例
 const handleLogin = async (params) => {
   loginLoading.value = true
   try {
-    await getTenantId()
+    await getTenant()
     const data = await validForm()
     if (!data) {
       return
@@ -288,7 +295,7 @@ const doSocialLogin = async (type: number) => {
     loginLoading.value = true
     if (loginData.tenantEnable === 'true') {
       // 尝试先通过 tenantName 获取租户
-      await getTenantId()
+      await getTenant()
       // 如果获取不到，则需要弹出提示，进行处理
       if (!authUtil.getTenantId()) {
         await message.prompt('请输入租户名称', t('common.reminder')).then(async ({ value }) => {

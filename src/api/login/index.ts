@@ -27,6 +27,11 @@ export const getTenantIdByName = (name: string) => {
   return request.get({ url: '/system/tenant/get-id-by-name?name=' + name })
 }
 
+// 使用用户名，获取租户信息
+export const getTenantByUser = (username: string) => {
+  return request.get({ url: '/system/tenant/get-by-user?username=' + username})
+}
+
 // 使用租户域名，获得租户信息
 export const getTenantByWebsite = (website: string) => {
   return request.get({ url: '/system/tenant/get-by-website?website=' + website })
